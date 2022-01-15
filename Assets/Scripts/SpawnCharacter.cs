@@ -12,6 +12,13 @@ public class SpawnCharacter : MonoBehaviour
 
     private const float _respawnHeight = -10f;
 
+    public int PlayerLivesLeft;
+    public const int NumOfLives = 3;
+
+    public bool GameEnded = false;
+
+    public UpdatePlayerInfo UpdatePlayerInfo;
+
 
     // public UpdatePlayerInfo UpdatePlayerInfo;
     // Start is called before the first frame update
@@ -22,7 +29,8 @@ public class SpawnCharacter : MonoBehaviour
         _playerTransform = _playerChar.transform;
 
         _rigidbody = _playerChar.GetComponent<Rigidbody>();
-        // UpdatePlayerInfo = GameObject.FindObjectOfType<UpdatePlayerInfo>();
+        PlayerLivesLeft = NumOfLives;
+        UpdatePlayerInfo = GameObject.FindObjectOfType<UpdatePlayerInfo>();
     }
 
     // Update is called once per frame
@@ -30,8 +38,24 @@ public class SpawnCharacter : MonoBehaviour
     {
         if (_playerTransform.position.y < _respawnHeight)
         {
-            _playerTransform.position = _charSpawnLocation;
-            _rigidbody.velocity = Vector3.zero;
+            if (PlayerLivesLeft > 0)
+            {
+                _playerTransform.position = _charSpawnLocation;
+                _rigidbody.velocity = Vector3.zero;
+                PlayerLivesLeft -= 1;
+                UpdatePlayerInfo.UpdatePlayerLivesText(PlayerLivesLeft);
+            }
+            else
+            {
+                EndGame();
+                UpdatePlayerInfo.DisplayGameOver();
+            }
         }
+    }
+    void EndGame()
+    {
+        GameEnded = true;
+        Time.timeScale = 0;
+        Debug.Log("Game has ended");
     }
 }
