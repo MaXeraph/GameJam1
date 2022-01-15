@@ -10,14 +10,14 @@ public class SpongeMovement : MonoBehaviour
     [SerializeField]
     private float maxSpeed = 7f;
     [SerializeField]
-    Rigidbody rbody;
+    private Rigidbody rbody;
     [SerializeField]
     Renderer renderer;
 
     private int tilesCleaned = 0;
     void Start()
     {
-        
+        rbody = this.gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

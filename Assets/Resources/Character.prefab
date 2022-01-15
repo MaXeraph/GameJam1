@@ -173,9 +173,9 @@ GameObject:
   - component: {fileID: 6424410043777324039}
   - component: {fileID: 6819205855941894483}
   - component: {fileID: 6819205855941894480}
-  - component: {fileID: 6819205855941894482}
+  - component: {fileID: 3133873706132672360}
   m_Layer: 0
-  m_Name: Sponge
+  m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,7 +227,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9719554, y: 0.7674637, z: 1.428205}
   m_Center: {x: 0.020209372, y: -0.11626816, z: 0.010418117}
---- !u!114 &6819205855941894482
+--- !u!114 &3133873706132672360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 7
-  rbody: {fileID: 6819205855941894483}
+  rbody: {fileID: 0}
   renderer: {fileID: 0}
 --- !u!1 &7174168155602132108
 GameObject:
